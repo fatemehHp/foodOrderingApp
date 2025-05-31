@@ -9,7 +9,7 @@ const AppLayout = () => {
       {/* header */}
       <Header />
       {/* main */}
-      <main className="bg-orange-50 mt-11 ">
+      <main className=" mt-11 flex flex-col gap-7 py-4 ">
         <Outlet />
       </main>
     </div>

@@ -1,11 +1,13 @@
-import React from "react";
 import Header from "./Header";
-import Home from "./Home";
-import { Outlet } from "react-router-dom";
+import Spinner from "./Spinner";
+import { Outlet, useNavigation } from "react-router-dom";
 
 const AppLayout = () => {
+  const pageStatus = useNavigation();
+  const isLoading = pageStatus.state === "loading";
   return (
     <div>
+      {isLoading && <Spinner />}
       {/* header */}
       <Header />
       {/* main */}

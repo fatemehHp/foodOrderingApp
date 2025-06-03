@@ -1,4 +1,5 @@
 import Logo from "./Logo";
+import SearchOrder from "./SearchOrder";
 
 const Header = () => {
   return (
@@ -6,17 +7,13 @@ const Header = () => {
       {/* Logo */}
       <Logo />
       {/* Search */}
-      <div className="flex-1 mx-4 max-w-md">
-        <input
-          type="text"
-          placeholder="Search for pizza or drinks..."
-          className="w-full px-4 py-2 rounded-full border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400 transition"
-        />
-      </div>
+      <SearchOrder />
+      <div className="flex-1 mx-4 max-w-md"></div>
       {/* User */}
       <div className="text-gray-700 text-sm sm:text-base font-medium">
         Welcome, User
       </div>
+      s
     </header>
   );
 };

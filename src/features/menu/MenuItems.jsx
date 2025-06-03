@@ -25,12 +25,6 @@ const MenuItems = ({ item }) => {
           {item.name}
         </h3>
 
-        <ul className="text-sm text-gray-500 mb-3 list-disc pl-5">
-          {item.ingredients.map((ing, i) => (
-            <li key={i}>{ing}</li>
-          ))}
-        </ul>
-
         <div className="text-right">
           {!item.soldOut ? (
             <span className="text-lg font-bold text-purple-600">

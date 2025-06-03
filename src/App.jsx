@@ -8,9 +8,11 @@ import AppLayout from "./Ui/AppLayout";
 import Home from "./Ui/Home";
 import { getMenuData } from "./features/menu/Menu";
 import Error from "./Ui/Error";
+import { getOrderDetailById } from "./features/order/Order";
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
+    errorElement: <Error />, // 🔧 این خط مهمه
     children: [
       {
         path: "/",
@@ -33,6 +35,8 @@ const router = createBrowserRouter([
       {
         path: "/order/:id",
         element: <Order />,
+        loader: getOrderDetailById,
+        errorElement: <Error />,
       },
     ],
   },

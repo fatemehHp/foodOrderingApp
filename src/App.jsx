@@ -9,6 +9,7 @@ import Home from "./Ui/Home";
 import { getMenuData } from "./features/menu/Menu";
 import Error from "./Ui/Error";
 import { getOrderDetailById } from "./features/order/Order";
+import { sendDataToApi } from "./features/order/CreateOrder";
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
       {
         path: "/order/new",
         element: <CreateOrder />,
+        action: sendDataToApi,
       },
       {
         path: "/order/:id",

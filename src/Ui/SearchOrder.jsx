@@ -2,24 +2,27 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function SearchOrder() {
-  const [searchQuary, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
   function submitHandler(e) {
     e.preventDefault();
-    if (!searchQuary) return;
-    else {
-      navigate(`/order/${searchQuary}`);
-    }
+    if (!searchQuery.trim()) return;
+    navigate(`/order/${searchQuery.trim()}`);
+    setSearchQuery(""); // برای پاک کردن ورودی بعد از جستجو
   }
+
   return (
-    <form onSubmit={(e) => submitHandler(e)}>
+    <form
+      onSubmit={submitHandler}
+      className="flex items-center bg-white rounded-full shadow-md px-4 py-2 border border-orange-200 focus-within:ring-2 focus-within:ring-orange-400 transition w-full max-w-xs"
+    >
       <input
         type="text"
-        value={searchQuary}
+        value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder="Search for pizza or drinks..."
-        className="w-full px-4 py-2 rounded-full border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400 transition"
+        placeholder="Search your order..."
+        className="flex-grow bg-transparent focus:outline-none text-orange-700 placeholder:text-orange-300"
       />
     </form>
   );

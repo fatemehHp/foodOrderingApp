@@ -2,17 +2,19 @@ import React from "react";
 import { fetchMenuData } from "../../services/resturantApi";
 import { useLoaderData } from "react-router-dom";
 import MenuItems from "./MenuItems";
+
 const Menu = () => {
   const menuItems = useLoaderData();
+
   return (
-    <section className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-100 py-12 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-14">
+    <section className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-200 py-16 px-6 sm:px-12">
+      <div className=" mx-auto">
+        <h2 className="text-5xl font-extrabold text-center text-purple-800 mb-16 drop-shadow-lg">
           🍕 Our Pizza Menu
         </h2>
-        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {menuItems.map((item) => (
-            <MenuItems item={item} />
+            <MenuItems item={item} key={item.id || item.pizzaId} />
           ))}
         </div>
       </div>

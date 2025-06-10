@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const CartSummary = () => {
+  const userName = useSelector((state) => state.userReducer.userName);
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-yellow-100 via-pink-100 to-yellow-50 p-4">
       <div className="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-2xl">
@@ -12,7 +15,7 @@ const CartSummary = () => {
         </Link>
 
         <h2 className="text-2xl font-bold text-center text-pink-700 mb-6">
-          🛒 Your Cart
+          {userName}'s Cart
         </h2>
 
         <ul className="divide-y divide-gray-200 border-y mb-6"></ul>

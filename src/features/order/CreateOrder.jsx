@@ -1,7 +1,10 @@
 import { Form } from "react-router-dom";
 import { sendData } from "../../services/resturantApi";
+import { useSelector } from "react-redux";
 
 const CreateOrder = () => {
+  const userName = useSelector((state) => state.userReducer.userName);
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-yellow-100 via-pink-100 to-yellow-50 p-4">
       <div className="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-xl">
@@ -17,8 +20,9 @@ const CreateOrder = () => {
             <input
               type="text"
               name="customer"
+              value={userName}
               required
-              placeholder="John Doe"
+              defaultValue={userName}
               className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400"
             />
           </div>

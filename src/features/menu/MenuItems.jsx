@@ -1,6 +1,21 @@
 import React from "react";
-
+import Button from "../../Ui/Button";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../cart/cart";
 const MenuItems = ({ item }) => {
+  const dispatch = useDispatch();
+  const cartObject = {
+    id: item.id,
+    pizzaName: item.name,
+    unitPrice: item.unitPrice,
+    quantity: 1,
+    totalPrice: item.unitPrice * 1,
+  };
+
+  // Add To Cart Function
+  function addOrderToCart() {
+    dispatch(addToCart(cartObject));
+  }
   return (
     <div
       key={item.id}
@@ -25,11 +40,16 @@ const MenuItems = ({ item }) => {
           {item.name}
         </h3>
 
-        <div className="text-right">
+        <div className="text-right grid gap-3">
           {!item.soldOut ? (
-            <span className="text-xl font-bold text-purple-700">
-              ${item.unitPrice.toFixed(2)}
-            </span>
+            <>
+              <span className="text-xl font-bold text-purple-700">
+                ${item.unitPrice.toFixed(2)}
+              </span>
+              <Button variant="small" onClick={() => addOrderToCart()}>
+                + Add to Cart
+              </Button>
+            </>
           ) : (
             <span className="text-sm text-red-600 font-semibold tracking-wide">
               Unavailable

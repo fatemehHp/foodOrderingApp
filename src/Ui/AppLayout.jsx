@@ -1,6 +1,7 @@
 import Header from "./Header";
 import Spinner from "./Spinner";
 import { Outlet, useNavigation } from "react-router-dom";
+import CartOverview from "../features/cart/CartOverView";
 
 const AppLayout = () => {
   const { state } = useNavigation();
@@ -22,6 +23,7 @@ const AppLayout = () => {
       <main className=" mx-auto px-4 sm:px-6 py-8 mt-8 space-y-6">
         <Outlet />
       </main>
+      <CartOverview />
     </div>
   );
 };

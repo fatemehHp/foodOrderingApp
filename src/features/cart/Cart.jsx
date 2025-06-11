@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 const CartSummary = () => {
   const userName = useSelector((state) => state.userReducer.userName);
 
+  const cartSlice = useSelector((state) => state.cartSlice.cart);
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-yellow-100 via-pink-100 to-yellow-50 p-4">
       <div className="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-2xl">
@@ -18,7 +20,23 @@ const CartSummary = () => {
           {userName}'s Cart
         </h2>
 
-        <ul className="divide-y divide-gray-200 border-y mb-6"></ul>
+        <ul className="divide-y divide-gray-200 border-y mb-6">
+          {cartSlice.map((item) => {
+            return (
+              <li
+                key={item.id}
+                className="py-4 flex justify-between items-center"
+              >
+                <span className="text-pink-800 font-medium">
+                  {item.pizzaName}
+                </span>
+                <span className="text-gray-500 text-sm">
+                  quantity: {item.quantity}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
 
         <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
           <Link

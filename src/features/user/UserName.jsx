@@ -31,7 +31,7 @@ const UserName = () => {
         onChange={(e) => setUserName(e.target.value)}
         type="text"
         placeholder="What's your name?"
-        className="w-full px-6 py-3 border border-pink-200 rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all placeholder:text-pink-300 text-pink-700 font-medium shadow-inner"
+        className="w-full px-6 py-3 border mb-2 border-pink-200 rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all placeholder:text-pink-300 text-pink-700 font-medium shadow-inner"
       />
       {userName ? <Button type="sumbit"> Go to Menu</Button> : null}
     </form>

@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../Ui/Button";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../cart/cart";
+import { addToCart } from "../cart/cartSlice";
 const MenuItems = ({ item }) => {
   const dispatch = useDispatch();
   const cartObject = {

@@ -10,7 +10,6 @@ const cartSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       if (state.cart.some((item) => item.id === action.payload.id)) {
-        console.log("test");
         cartSlice.caseReducers.increaseItemQuantity(state, action);
       } else {
         state.cart.push(action.payload);
@@ -20,20 +19,32 @@ const cartSlice = createSlice({
       state.cart = state.cart.filter((item) => item.id != action.payload);
     },
     increaseItemQuantity(state, action) {
-      const currentItem = state.cart.find(
-        (item) => item.id === action.payload.id
-      );
+      const currentItem = state.cart.find((item) => item.id === action.payload);
       if (currentItem) {
         currentItem.quantity += 1;
         currentItem.totalPrice = currentItem.unitPrice * currentItem.quantity;
       }
     },
-    clearCart(state, action) {
+    decreaseItemQuantity(state, action) {
+      const currentItem = state.cart.find((item) => item.id === action.payload);
+      if (currentItem.quantity === 1) {
+        return;
+      } else if (currentItem) {
+        currentItem.quantity -= 1;
+        currentItem.totalPrice = currentItem.unitPrice * currentItem.quantity;
+      }
+    },
+    clearCart(state) {
       state.cart = [];
     },
   },
 });
-export const { addToCart, deleteToCart, increaseItemQuantity, clearCart } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  deleteToCart,
+  increaseItemQuantity,
+  decreaseItemQuantity,
+  clearCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

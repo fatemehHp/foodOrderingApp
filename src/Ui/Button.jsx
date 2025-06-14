@@ -29,6 +29,7 @@ const Button = ({
       shadow 
       w-auto
     `,
+    quantity: `bg-pink-100 text-pink-600 hover:bg-pink-200 w-8 h-8 rounded-full text-lg font-bold flex items-center justify-center shadow-sm`,
     delete: `bg-red-100 text-red-600 hover:bg-red-200 hover:text-red-700 transition-colors font-semibold text-xs px-3 py-1 rounded-xl shadow-sm`,
     clearCart: `text-center border border-pink-500 hover:bg-pink-100 text-pink-600 font-bold py-3 px-6 rounded-2xl shadow-sm w-full`,
   };

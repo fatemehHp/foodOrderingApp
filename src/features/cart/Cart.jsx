@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "../../Ui/Button";
 import { deleteToCart } from "./cartSlice";
 import { clearCart } from "./cartSlice";
-
+import Quantity from "../../Ui/quantity";
 const CartSummary = () => {
   const userName = useSelector((state) => state.userReducer.userName);
 
@@ -50,7 +50,7 @@ const CartSummary = () => {
                         total price: ${item.unitPrice * item.quantity}
                       </span>
                     </div>
-
+                    <Quantity quantity={item.quantity} id={item.id} />
                     <div className="flex items-center gap-4 justify-between sm:justify-end w-full sm:w-auto">
                       <span className="text-pink-700 font-semibold">
                         unit price:{item.unitPrice}

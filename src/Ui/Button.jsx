@@ -29,6 +29,7 @@ const Button = ({
       shadow 
       w-auto
     `,
+    delete: `bg-red-100 text-red-600 hover:bg-red-200 hover:text-red-700 transition-colors font-semibold text-xs px-3 py-1 rounded-xl shadow-sm`,
   };
 
   const styles = `${baseStyle} ${variants[variant]}`;

@@ -30,6 +30,7 @@ const Button = ({
       w-auto
     `,
     delete: `bg-red-100 text-red-600 hover:bg-red-200 hover:text-red-700 transition-colors font-semibold text-xs px-3 py-1 rounded-xl shadow-sm`,
+    clearCart: `text-center border border-pink-500 hover:bg-pink-100 text-pink-600 font-bold py-3 px-6 rounded-2xl shadow-sm w-full`,
   };
 
   const styles = `${baseStyle} ${variants[variant]}`;

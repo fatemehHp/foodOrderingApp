@@ -29,7 +29,7 @@ const cartSlice = createSlice({
       }
     },
     clearCart(state, action) {
-      state.cart.push(action.payload);
+      state.cart = [];
     },
   },
 });

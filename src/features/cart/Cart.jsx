@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../../Ui/Button";
 import { deleteToCart } from "./cartSlice";
+import { clearCart } from "./cartSlice";
 
 const CartSummary = () => {
   const userName = useSelector((state) => state.userReducer.userName);
@@ -10,8 +11,10 @@ const CartSummary = () => {
   const dispatch = useDispatch();
 
   function deleteFromCartHandle(id) {
-    console.log(id);
     dispatch(deleteToCart(id));
+  }
+  function clearAllCart() {
+    dispatch(clearCart());
   }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-yellow-100 via-pink-100 to-yellow-50 p-4">
@@ -72,9 +75,9 @@ const CartSummary = () => {
                 🍕 Order pizzas
               </Link>
 
-              <button className="text-center border border-pink-500 hover:bg-pink-100 text-pink-600 font-bold py-3 px-6 rounded-2xl shadow-sm w-full">
+              <Button variant="clearCart" onClick={clearAllCart}>
                 🗑️ Clear cart
-              </button>
+              </Button>
             </div>
           </>
         )}

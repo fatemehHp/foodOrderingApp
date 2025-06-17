@@ -1,9 +1,13 @@
 import React from "react";
 import Button from "../../Ui/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../cart/cartSlice";
+import Quantity from "../../Ui/quantity";
+import { getCurrentItem } from "../cart/cartSlice";
 const MenuItems = ({ item }) => {
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cartSlice.cart);
+
   const cartObject = {
     id: item.id,
     pizzaName: item.name,
@@ -11,10 +15,12 @@ const MenuItems = ({ item }) => {
     quantity: 1,
     totalPrice: item.unitPrice * 1,
   };
-
+  const isInCart = cart.some((item) => item.id === cartObject.id);
   // Add To Cart Function
   function addOrderToCart() {
-    dispatch(addToCart(cartObject));
+    if (!isInCart) {
+      dispatch(addToCart(cartObject));
+    }
   }
   return (
     <div
@@ -46,9 +52,14 @@ const MenuItems = ({ item }) => {
               <span className="text-xl font-bold text-purple-700">
                 ${item.unitPrice.toFixed(2)}
               </span>
-              <Button variant="small" onClick={() => addOrderToCart()}>
-                + Add to Cart
+              <Button
+                variant="small"
+                onClick={() => addOrderToCart()}
+                disable={isInCart}
+              >
+                {isInCart ? "is in cart" : "+ Add to Cart"}
               </Button>
+              {isInCart ? <Quantity id={item.id} /> : null}
             </>
           ) : (
             <span className="text-sm text-red-600 font-semibold tracking-wide">

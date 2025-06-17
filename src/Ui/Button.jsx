@@ -6,6 +6,7 @@ const Button = ({
   type = "button",
   to,
   variant = "default",
+  disable,
 }) => {
   const baseStyle = `
     font-bold 
@@ -14,7 +15,13 @@ const Button = ({
     transition-all duration-300 
     focus:outline-none focus:ring-2 focus:ring-pink-300
   `;
-
+  const disabledStyle = `
+  font-bold 
+  px-6 py-3 
+  rounded-full shadow-lg 
+  transition-all duration-300 
+  focus:outline-none focus:ring-2 focus:ring-pink-300
+  `;
   const variants = {
     default: `
       bg-gradient-to-r from-pink-400 to-orange-400 
@@ -45,7 +52,12 @@ const Button = ({
   }
 
   return (
-    <button type={type} onClick={onClick} className={styles}>
+    <button
+      type={type}
+      onClick={onClick}
+      className={disable ? disabledStyle : styles}
+      disabled={disable}
+    >
       {children}
     </button>
   );

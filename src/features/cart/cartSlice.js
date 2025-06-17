@@ -39,6 +39,11 @@ const cartSlice = createSlice({
     },
   },
 });
+export function getCurrentItem(state, id) {
+  const currentItem = state.cart.find((item) => item.id === id);
+  console.log(currentItem);
+  return currentItem;
+}
 export const {
   addToCart,
   deleteToCart,
